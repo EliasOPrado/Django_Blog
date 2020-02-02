@@ -9,4 +9,9 @@ class Article(models.Model):
     #add in thumbnail later
     #add in author later
     def __str__(self):
-        return self.title 
+        return self.title
+
+    #will show only max 50 characters on the body
+    #using snippet instead of body on template
+    def snippet(self):
+        return self.body[:50] + "..."
