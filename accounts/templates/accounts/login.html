@@ -2,11 +2,11 @@
 
 
 {% block content %}
-<h1>Sign up</h1>
-<form method="POST" action='/accounts/signup/'class="site-form">
+<h1>Log in</h1>
+<form method="POST" action="{% url 'accounts:login' %}"class="site-form">
   {% csrf_token %}
   <!-- auto-generated form from django  -->
   {{ form }}
-  <input type="submit" value='Signup'>
+  <input type="submit" value='Login'>
 </form>
 {% endblock %}
