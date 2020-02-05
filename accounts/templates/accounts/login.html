@@ -7,6 +7,10 @@
   {% csrf_token %}
   <!-- auto-generated form from django  -->
   {{ form }}
+  <!-- if the request is ok, then send the next parameter within the @login_required( -->
+  {% if request.GET.next %}
+  <input type="hidden" name="next" value="{{ request.GET.next }}">
+  {% endif %}
   <input type="submit" value='Login'>
 </form>
 {% endblock %}
