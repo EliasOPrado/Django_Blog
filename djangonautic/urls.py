@@ -16,10 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from . import views
-#to read static files
+'''
+As its already imported the view
+above there's a need to change the view name
+'''
+from articles import views as article_views
+
+# == to read static files ==
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf.urls.static import static
 from django.conf import settings
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,7 +35,7 @@ urlpatterns = [
     #include accounts app
     path('accounts/', include('accounts.urls')),
     path('about/', views.about, name='about'),
-    path('', views.homepage, name='home'),
+    path('', article_views.article_list, name='home'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

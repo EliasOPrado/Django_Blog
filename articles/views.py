@@ -17,9 +17,19 @@ def article_detail(request, slug):
 @login_required(login_url='/accounts/login')
 def article_create(request):
     if request.method == "POST":
+        # need to pass both POST and FILES to submit files using CreateArticle function
         form = forms.CreateArticle(request.POST, request.FILES)
         if form.is_valid():
             # save to db
+            '''
+            On the code below the form will be save to the instance var
+            then concatenated to the author (from the model) and request
+            the same to the form. After that the instance will be saved.
+            Basically adding a user = session['name'] to the form.
+            '''
+            instance = form.save(commit=False)
+            instance.author = request.user
+            instance.save()
             return redirect('articles:list')
     else:
         form = forms.CreateArticle()

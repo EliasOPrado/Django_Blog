@@ -1,7 +1,7 @@
-
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,24 +9,36 @@
   <link rel="stylesheet" href="{% static 'style.css' %}">
   <title>Article list</title>
 </head>
+
 <body>
-<div class="wrapper">
-  <h1><a href="{% url 'articles:list' %}"><img src="{% static 'logo.png' %}"/></a></h1>
-  <nav>
-    <ul>
-      <li>
+  <header class="wrapper">
 
-        <form class="logout-link" action="{% url 'accounts:logout'%}" method="post">
-          {% csrf_token %}
+    <h1><a href="{% url 'home' %}"><img src="{% static 'logo.png' %}" /></a></h1>
+    <nav>
+      <ul>
+        {% if user.is_authenticated %}
+        <li>
 
-          <button type="submit" >Logout</button>
+          <form class="logout-link" action="{% url 'accounts:logout'%}" method="post">
+            {% csrf_token %}
 
-          
-        </form>
-      </li>
-    </ul>
-  </nav>
-{% block content %} {% endblock %}
-</div>
+            <button type="submit">Logout</button>
+
+
+          </form>
+        </li>
+        <li><a href="{% url 'articles:create' %}" class="highlight">Create New Article</a></li>
+        {% else %}
+        <li><a href="{% url 'accounts:login' %}" class="highlight">Login</a></li>
+        <li><a href="{% url 'accounts:signup' %}" class="highlight">Signup</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+  </header>
+    <div class="wrapper">
+      {% block content %} {% endblock %}
+    </div>
+
 </body>
+
 </html>
