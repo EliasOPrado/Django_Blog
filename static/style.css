@@ -53,8 +53,16 @@ nav button {
   font-size: 2em;
 }
 
-nav li a.highlight {
+nav li a.highlight{
   font-size: 2em;
+}
+
+a.highlight1 {
+  border: 1px solid #00dba0;
+  font-size: 2em;
+  padding: 10px;
+  border-radius: 4px;
+  color:#00dba0;
 }
 
 .articles {
@@ -106,4 +114,44 @@ nav li a.highlight {
 header h1 a img {
   hight: 100px;
   width: 200px
+}
+
+.site-form {
+  margin-top: 60px;
+  border: 1px solid #00dba0;
+  padding: 20px;
+}
+
+.site-form input, .site-form textarea{
+  display: block;
+  margin: 20px 0 0 0;
+  padding: 10px;
+}
+
+.helptext, .helptext ul {
+  margin: 0 auto 20px;
+  color: #bbb;
+  font-size: 0.9em;
+  display: block;
+}
+
+.errorlist li {
+  padding: 10px;
+  list-style-type:none;
+  border: 1px solid #ff5722;
+  color: #ff5722;
+  margin: 10px 0;
+}
+
+.errorlist {
+  padding: 0;
+}
+
+.site-form input[type="submit"]{
+  background: #00dba0;
+  border: 0;
+  color: #fff;
+  font-size: 1.2em;
+  border-radius: 4px;
+  marginL: 10px 0;
 }
